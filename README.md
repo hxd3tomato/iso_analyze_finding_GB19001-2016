@@ -77,8 +77,10 @@ powershell -ExecutionPolicy Bypass -File scripts/install.ps1
 
 ~~~text
 在会话里说：用 iso_clause_lookup 查 7.5.3
-或在 PowerShell 里：Get-Content <profile>/../plugin-loaded.log   # 若配置了 debugMarker
+或查看加载探针：Get-Content $env:TEMPiso-audit-plugin.log
 ~~~
+
+探针会记录 module-import / apply-ok / apply-error 三类事件（可用环境变量 ISO_AUDIT_MARKER 改路径）。
 
 ---
 
@@ -95,7 +97,6 @@ powershell -ExecutionPolicy Bypass -File scripts/install.ps1
     dataDir: ''           # 默认包内 knowledge/data
     timeoutMs: 60000
     recordByDefault: true
-    debugMarker: ''       # 填入文件路径后，apply 成功会追加一行 JSON
 ~~~
 
 解释器探测顺序：config.python → 环境变量 ISO_KB_PYTHON → DSH 自带 Python（~/.dsh/dsh-runtimes/...）→ PATH 中的 python / python3 / py。
