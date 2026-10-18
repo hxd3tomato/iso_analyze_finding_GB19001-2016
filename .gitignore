@@ -1,0 +1,8 @@
+node_modules/
+__pycache__/
+*.pyc
+*.log
+build/
+.DS_Store
+Thumbs.db
+*.tgz
